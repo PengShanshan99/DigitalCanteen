@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">DigitalCanteen</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_edit_menu">Edit Menu</string>
+    <string name="enter_food_name">Enter food name</string>
+    <string name="enter_prep_time">Enter preparation time</string>
+    <string name="enter_price">Enter price</string>
+    <string-array name="availability">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 </resources>
