@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_dashboard);
+                    // Write a message to the database
                     return true;
                 case R.id.navigation_edit_menu:
                     mTextMessage.setText(R.string.title_edit_menu);
