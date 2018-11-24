@@ -83,7 +83,7 @@ public class EditMenu extends AppCompatActivity {
         buttonMenuSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (idOld != -1) {
+                if (idOld == -1) {
                     idCounterFood += 1;
                     DatabaseReference refFoodName = database.getReference("menu/" + idCounterFood + "/name");
                     refFoodName.setValue(editTextFoodName.getText().toString());
