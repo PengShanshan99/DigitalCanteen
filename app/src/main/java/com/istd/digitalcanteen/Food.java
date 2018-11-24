@@ -1,28 +1,58 @@
 package com.istd.digitalcanteen;
 
 public class Food {
-    String id;
-    String stall;
-    String name;
-    String price;
-    String prepTime;
-    boolean availability;
-    public void setId(String id){
-        this.id = id;
-    }
-    public void setStall(String stall){
-        this.stall = stall;
-    }
-    public void setName(String name){
+    //private String id;//Do I need ID as an attribute actually?
+    private String name;
+    private String price;
+    private String prepTime;
+    private String availability;
+
+    public Food(String id, String stall, String name, String price, String prepTime, String availability) {
+        //this.id = id;
         this.name = name;
-    }
-    public void setPrice(String price){
         this.price = price;
-    }
-    public void setAvailability(boolean availability){
+        this.prepTime = prepTime;
         this.availability = availability;
     }
-    public void setPrepTime(String time){
-        this.prepTime = time;
+    public Food(){}
+
+//    public String getId() {
+//        return id;
+//    }
+
+//    public void setId(String id) {
+//        this.id = id;
+//    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getPrepTime() {
+        return prepTime;
+    }
+
+    public void setPrepTime(String prepTime) {
+        this.prepTime = prepTime;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
 }

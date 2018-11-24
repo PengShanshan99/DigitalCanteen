@@ -26,11 +26,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     mTextMessage.setText(R.string.title_dashboard);
-                    // Write a message to the database
                     return true;
                 case R.id.navigation_edit_menu:
                     mTextMessage.setText(R.string.title_edit_menu);
-                    Intent intent = new Intent(MainActivity.this, EditMenu.class);
+                    Intent intent = new Intent(MainActivity.this, Menu.class);
                     startActivity(intent);
                     return true;
             }

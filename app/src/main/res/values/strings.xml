@@ -9,8 +9,10 @@
     <string name="enter_price">Enter price</string>
     <string name="menu_save">Save</string>
     <string name="foodId">0</string>
+    <string name="databaseChanged">"Database has changed, please refresh to see latest menu!</string>
     <string-array name="availability">
         <item>Yes</item>
         <item>No</item>
     </string-array>
+    <string name="title_activity_menu">Menu</string>
 </resources>
