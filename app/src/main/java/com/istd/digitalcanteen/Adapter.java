@@ -11,21 +11,24 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<FoodHolder> {
     List<Food> list;
     Context context;
+    ArrayList<Integer> list_of_id;
 
-    public Adapter(List<Food> list, Context context) {
+    public Adapter(List<Food> list, Context context, ArrayList<Integer> list_of_id) {
         this.list = list;
         this.context = context;
+        this.list_of_id = list_of_id;
         Log.i("adapter","Adapter created!");
     }
 
     @NonNull
     @Override
-    public FoodHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public FoodHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row, viewGroup, false);
         Log.i("adapter","view is inflated!");
         FoodHolder foodHolder = new FoodHolder(view);
@@ -33,9 +36,11 @@ public class Adapter extends RecyclerView.Adapter<FoodHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FoodHolder foodHolder, int i) {
-        Log.i("adapter","onBindViewHolder is called!");
-        Food anotherFood = list.get(i);
+    public void onBindViewHolder(@NonNull FoodHolder foodHolder, int position) {
+        Log.i("adapterhay","onBindViewHolder is called!");
+        Food anotherFood = list.get(position);
+        foodHolder.setId(list_of_id.get(position));
+        Log.i("setid","id is set in onBindViewHolder");
         foodHolder.setDetails(context, anotherFood.getName(), anotherFood.getPrice(), anotherFood.getPrepTime(), anotherFood.getAvailability());
     }
 

@@ -36,6 +36,7 @@ public class Menu extends AppCompatActivity {
     DatabaseReference mRef;
     Adapter mAdapter;
     List list;
+    ArrayList<Integer> list_of_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,9 @@ public class Menu extends AppCompatActivity {
 //                        Toast toast = Toast.makeText(Menu.this, R.string.databaseChanged, Toast.LENGTH_LONG);
 //                        toast.show();
                         list = new ArrayList<Food>();
+                        list_of_id = new ArrayList<Integer>();
                         for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
+                            list_of_id.add(Integer.parseInt(dataSnapshot1.getKey()));
                             Food foodRetrieved = dataSnapshot1.getValue(Food.class);
                             Food localFood = new Food();
                             String name = foodRetrieved.getName();
@@ -77,9 +80,9 @@ public class Menu extends AppCompatActivity {
                             localFood.setPrepTime(prepTime);
                             localFood.setAvailability(availability);
                             list.add(localFood);
-                            String theList = list.toString();
+                            String theList = list_of_id.toString();
                             Log.i("hello","successfully added one more food");
-                            Log.i("listhay",theList);
+                            Log.i("listofid",theList);
                         }
                     }
 
@@ -89,7 +92,7 @@ public class Menu extends AppCompatActivity {
                         Log.w("hello", "Failed to read value.", databaseError.toException());
                     }
                 });
-                mAdapter = new Adapter(list, Menu.this);
+                mAdapter = new Adapter(list, Menu.this, list_of_id);
                 recyclerViewMenu.setLayoutManager(new LinearLayoutManager(Menu.this));
                 recyclerViewMenu.setAdapter(mAdapter);
             }

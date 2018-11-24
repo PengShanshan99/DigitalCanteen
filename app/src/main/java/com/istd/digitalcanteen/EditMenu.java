@@ -1,6 +1,7 @@
 package com.istd.digitalcanteen;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,24 +17,53 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class EditMenu extends AppCompatActivity {
 
     Button buttonMenuSave;
-    Integer idCounterFood = 9;
+    Integer idCounterFood;
     EditText editTextFoodName;
     EditText editTextFoodPrice;
     EditText editTextFoodPrepTime;
     Spinner spinnerFoodAvailability;
+    FirebaseDatabase database;
+    int idOld;
     static String TAG = "thefirebasebug";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_menu);
+        Intent intent = getIntent();
+        database = FirebaseDatabase.getInstance();
+        idOld = intent.getIntExtra("id",-1);
+
         spinnerFoodAvailability = findViewById(R.id.spinner_availability);
         editTextFoodName = findViewById(R.id.enterFoodName);
         editTextFoodPrepTime = findViewById(R.id.enterPreparationTime);
         editTextFoodPrice = findViewById(R.id.enterPrice);
         buttonMenuSave = findViewById(R.id.menu_save);
+
+        if (idOld!=-1){
+            DatabaseReference refOld = database.getReference("menu/" + idOld);
+            refOld.addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       Food foodRetrieved = dataSnapshot.getValue(Food.class);
+                       String name = foodRetrieved.getName();
+                       String price = foodRetrieved.getPrice();
+                       String prepTime = foodRetrieved.getPrepTime();
+                       String availability = foodRetrieved.getAvailability();
+                       editTextFoodName.setText(name);
+                       editTextFoodPrice.setText(price);
+                       editTextFoodPrepTime.setText(prepTime);
+                   }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.w("hello", "Failed to read value old.", databaseError.toException());
+                }
+            });
+        };
         DatabaseReference mref = FirebaseDatabase.getInstance().getReference("foodId");
         mref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -53,29 +83,32 @@ public class EditMenu extends AppCompatActivity {
         buttonMenuSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                idCounterFood += 1;
-                //the marked down code is used if we decided to use a food class. But I think directly reading from
-                // the input line is more convenient.
-//                Food anotherFood = new Food();
-//                anotherFood.setId(idCounter.toString());//to be changed
-//                anotherFood.setAvailability(true);
-//                anotherFood.setName(xxx);
-//                anotherFood.setPrice(xxx);
-//                anotherFood.setStall(xxx);
-//                anotherFood.setPrepTime(xxx);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference refFoodName = database.getReference("menu/"+idCounterFood+"/name");
-                refFoodName.setValue(editTextFoodName.getText().toString());
-                DatabaseReference refFoodPrice = database.getReference("menu/"+idCounterFood+"/price");
-                refFoodPrice.setValue(editTextFoodPrice.getText().toString());
-                DatabaseReference refFoodPrepTime = database.getReference("menu/"+idCounterFood+"/prepTime");
-                refFoodPrepTime.setValue(editTextFoodPrepTime.getText().toString());
-                DatabaseReference refFoodAvailability = database.getReference("menu/"+idCounterFood+"/availability");
-                refFoodAvailability.setValue(spinnerFoodAvailability.getSelectedItem().toString());
-                DatabaseReference refFoodId = database.getReference("foodId");
-                refFoodId.setValue(idCounterFood.toString());
-                Intent intent = new Intent(EditMenu.this, MainActivity.class);
-                startActivity(intent);
+                if (idOld != -1) {
+                    idCounterFood += 1;
+                    DatabaseReference refFoodName = database.getReference("menu/" + idCounterFood + "/name");
+                    refFoodName.setValue(editTextFoodName.getText().toString());
+                    DatabaseReference refFoodPrice = database.getReference("menu/" + idCounterFood + "/price");
+                    refFoodPrice.setValue(editTextFoodPrice.getText().toString());
+                    DatabaseReference refFoodPrepTime = database.getReference("menu/" + idCounterFood + "/prepTime");
+                    refFoodPrepTime.setValue(editTextFoodPrepTime.getText().toString());
+                    DatabaseReference refFoodAvailability = database.getReference("menu/" + idCounterFood + "/availability");
+                    refFoodAvailability.setValue(spinnerFoodAvailability.getSelectedItem().toString());
+                    DatabaseReference refFoodId = database.getReference("foodId");
+                    refFoodId.setValue(idCounterFood.toString());
+                    Intent intent = new Intent(EditMenu.this, Menu.class);
+                    startActivity(intent);
+                }else{
+                    DatabaseReference refFoodNameOld = database.getReference("menu/" + idOld + "/name");
+                    refFoodNameOld.setValue(editTextFoodName.getText().toString());
+                    DatabaseReference refFoodPriceOld = database.getReference("menu/" + idOld + "/price");
+                    refFoodPriceOld.setValue(editTextFoodPrice.getText().toString());
+                    DatabaseReference refFoodPrepTimeOld = database.getReference("menu/" + idOld + "/prepTime");
+                    refFoodPrepTimeOld.setValue(editTextFoodPrepTime.getText().toString());
+                    DatabaseReference refFoodAvailabilityOld = database.getReference("menu/" + idOld + "/availability");
+                    refFoodAvailabilityOld.setValue(spinnerFoodAvailability.getSelectedItem().toString());
+                    Intent intent = new Intent(EditMenu.this, Menu.class);
+                    startActivity(intent);
+                }
             }
         });
     }
