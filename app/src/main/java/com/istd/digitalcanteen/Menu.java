@@ -32,12 +32,15 @@ import java.util.List;
 public class Menu extends AppCompatActivity {
 
     RecyclerView recyclerViewMenu;
-    FirebaseDatabase mFB;
-    DatabaseReference mRef;
-    Adapter mAdapter;
-    List list;
-    ArrayList<Integer> list_of_id;
+    FirebaseDatabase mFB;//a firebase database object
+    DatabaseReference mRef;// a reference object for firebase
+    Adapter mAdapter;// an adapter that combines the firebase reference to the recycler view in our UI
+    List list;// a list for food objects
+    ArrayList<Integer> list_of_id;// a list to remember the id's when the food items are retrieved from firebase, so that when
+    //people want to modify a food and click on a food display in the ui and be led to the edit food page, the edittextviews could be filled up automatically
+    //with the data retreved from firebase first.
 
+    //the Log.i is created for me to debug. You can ignore it.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,7 @@ public class Menu extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);//for add new food item into the menu
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,10 +56,10 @@ public class Menu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        FloatingActionButton fab_refresh = (FloatingActionButton) findViewById(R.id.fab_refersh);
+        FloatingActionButton fab_refresh = (FloatingActionButton) findViewById(R.id.fab_refersh);//refresh the list when this button is clicked
         fab_refresh.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//retrieve data from firebase and update the UI
                 mFB = FirebaseDatabase.getInstance();
                 mRef = mFB.getReference("menu");
                 recyclerViewMenu = findViewById(R.id.recyclerView_menu);

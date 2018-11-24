@@ -22,21 +22,21 @@ import java.util.ArrayList;
 public class EditMenu extends AppCompatActivity {
 
     Button buttonMenuSave;
-    Integer idCounterFood;
+    Integer idCounterFood;//and id counter, everytime a new food item is created, it is added by one and used as the id of the new food item
     EditText editTextFoodName;
     EditText editTextFoodPrice;
     EditText editTextFoodPrepTime;
-    Spinner spinnerFoodAvailability;
+    Spinner spinnerFoodAvailability;//a drop down list of "Yes" and "No" to let the stall owners select the availability of the food.
     FirebaseDatabase database;
-    int idOld;
-    static String TAG = "thefirebasebug";
+    int idOld;//the food id passed from Menu.java when people clicked on an food item display to modify it
+    static String TAG = "thefirebasebug";//just for debug, can ignore
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_menu);
         Intent intent = getIntent();
         database = FirebaseDatabase.getInstance();
-        idOld = intent.getIntExtra("id",-1);
+        idOld = intent.getIntExtra("id",-1);//get the id from the intent
 
         spinnerFoodAvailability = findViewById(R.id.spinner_availability);
         editTextFoodName = findViewById(R.id.enterFoodName);
@@ -44,7 +44,7 @@ public class EditMenu extends AppCompatActivity {
         editTextFoodPrice = findViewById(R.id.enterPrice);
         buttonMenuSave = findViewById(R.id.menu_save);
 
-        if (idOld!=-1){
+        if (idOld!=-1){//add new food item
             DatabaseReference refOld = database.getReference("menu/" + idOld);
             refOld.addValueEventListener(new ValueEventListener() {
                @Override
@@ -83,7 +83,7 @@ public class EditMenu extends AppCompatActivity {
         buttonMenuSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (idOld == -1) {
+                if (idOld == -1) {//add new food item
                     idCounterFood += 1;
                     DatabaseReference refFoodName = database.getReference("menu/" + idCounterFood + "/name");
                     refFoodName.setValue(editTextFoodName.getText().toString());
@@ -97,7 +97,7 @@ public class EditMenu extends AppCompatActivity {
                     refFoodId.setValue(idCounterFood.toString());
                     Intent intent = new Intent(EditMenu.this, Menu.class);
                     startActivity(intent);
-                }else{
+                }else{//modify existing food item
                     DatabaseReference refFoodNameOld = database.getReference("menu/" + idOld + "/name");
                     refFoodNameOld.setValue(editTextFoodName.getText().toString());
                     DatabaseReference refFoodPriceOld = database.getReference("menu/" + idOld + "/price");
