@@ -1,0 +1,11 @@
+Main changes / New files:
+1. explore
+2. stall1
+// stall2.java&xml is empty, content is similar to stall1
+3. others: fireModel,recyclerAdapter etc.
+
+TBC:
+1. stall1: availability of food is False -> cannot choose this food item
+2. image of food
+3. generate food id (e.g. 00 000 000+=1, update to/from firebase)
+4. retrieve food name & food price from onClick
