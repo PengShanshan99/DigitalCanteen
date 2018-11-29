@@ -6,8 +6,9 @@ public class Food {
     private String price;
     private String prepTime;
     private String availability;
+    private String photoUri;
 
-    public Food(String id, String stall, String name, String price, String prepTime, String availability) {
+    public Food(String id, String stall, String name, String price, String prepTime, String availability, String photoUri) {
         //this.id = id;
         this.name = name;
         this.price = price;

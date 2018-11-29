@@ -7,28 +7,45 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="9dp">
             <TextView
                 android:id="@+id/cardview_food_name"
                 android:text="hello firebase recycler view"
                 android:textSize="24dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="#160"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/cardview_food_photo"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/cardview_food_price"
-                android:text="this will be the price of the food"/>
+                android:text="this will be the price of the food"
+                android:textColor="#140"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/cardview_food_preptime"
+                android:textColor="#009"
                 android:text="this will be the preparation time of the food"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/cardview_food_availability"
-                android:text="this will be the availability of the food"
-                android:layout_marginBottom="19dp"/>
+                android:textColor="#800"
+                android:text="this will be the availability of the food"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="---------------------------------------------------------------------------------"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
