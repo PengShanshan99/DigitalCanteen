@@ -18,3 +18,10 @@ by having the same id as key.
 When saving to database, there is an unique id for each food, the same id applies to the image storage. 
 Hence, when I inflate the recyclerView from realtime database, I can refer to the id and hence find the corresponding image, displaying it
 in the cardView using GlideAPP.
+
+How to use Fragments for bottom navigation activity:
+https://www.youtube.com/watch?v=jpaHMcQDaDg
+https://www.simplifiedcoding.net/bottom-navigation-android-example/#Using-Bottom-Navigation-in-Android
+
+How to inflate RecyclerView in a Fragment:
+https://stackoverflow.com/questions/43104485/how-to-change-fragment-with-the-bottom-navigation-activity
