@@ -34,7 +34,7 @@ public class EditMenu extends AppCompatActivity {
 
     private static final int GALLERY_INTENT = 2;
     Button buttonMenuSave;//the save button
-    Integer idCounterFood;//and id counter, everytime a new food item is created, it is added by one and used as the id of the new food item
+    Integer idCounterFood = 0;//and id counter, everytime a new food item is created, it is added by one and used as the id of the new food item
     EditText editTextFoodName;//the input for name
     EditText editTextFoodPrice;//the input for price
     EditText editTextFoodPrepTime;//the input for preparation time
@@ -49,8 +49,7 @@ public class EditMenu extends AppCompatActivity {
     boolean allFilled = false;//check if all fields are filled
     boolean photoUriGot = false;//check if there is a selected photo
     Integer actualId;
-
-
+    //TODO_DONE debug: why when clicking on "+" and add new food item, the activity crashes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +57,10 @@ public class EditMenu extends AppCompatActivity {
         setContentView(R.layout.activity_edit_menu);
         Intent intent = getIntent();
         database = FirebaseDatabase.getInstance();
+        //Log.i("databaseInstance","FirebaseDatabase.getInstance() is successfully executed "+database.toString());
         idOld = intent.getIntExtra("id",-1);//get the id from the intent
         storage = FirebaseStorage.getInstance();
+        //Log.i("databaseInstance","FirebaseStorage.getInstance() is successfully executed "+storage.toString());
         storageRef = storage.getReference();
         spinnerFoodAvailability = findViewById(R.id.spinner_availability);
         editTextFoodName = findViewById(R.id.enterFoodName);
@@ -68,19 +69,8 @@ public class EditMenu extends AppCompatActivity {
         buttonMenuSave = findViewById(R.id.menu_save);
         imageButtonFoodPhoto = findViewById((R.id.food_photo));
 
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("foodId");
-        mref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String id = dataSnapshot.getValue(String.class);
-                idCounterFood = Integer.parseInt(id);
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
 
-        //TODO make the go back go back to the correct place
+        //TODO make the go back go back to the correct place: to be done as the last step as the activity structures may change
         if (idOld!=-1){//editing existing food item
             actualId = idOld;
             DatabaseReference refOld = database.getReference("menu/" + actualId);
@@ -98,15 +88,29 @@ public class EditMenu extends AppCompatActivity {
                        String availability = foodRetrieved.getAvailability();
                        editTextFoodName.setText(name);
                        editTextFoodPrice.setText(price);
-                       editTextFoodPrepTime.setText(prepTime);
-                   }
+                       editTextFoodPrepTime.setText(prepTime);}
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Log.w("hello", "Failed to read value old.", databaseError.toException());
                 }
             });
         }else{
-            actualId = idCounterFood+1;
+            DatabaseReference mref = FirebaseDatabase.getInstance().getReference("foodId");
+            mref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String id = dataSnapshot.getValue(String.class);
+                    idCounterFood = Integer.parseInt(id);
+                    actualId = idCounterFood+1;
+                    Log.i("inElse1","id retrieved: "+idCounterFood);
+                    Log.i("inElse","got actual ID: "+actualId);
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.i("inElse1","id retriev cancelled");
+                }
+            });
+
         };
 
 
@@ -161,7 +165,7 @@ public class EditMenu extends AppCompatActivity {
                     });
                     DatabaseReference refImagePath = database.getReference("menu/"+actualId+"/imagePath");
                     refImagePath.setValue(imagePath.toString());
-                    Intent intent = new Intent(EditMenu.this, Menu.class);
+                    Intent intent = new Intent(EditMenu.this, MainActivity.class);
                     startActivity(intent);
                     }else{//Otherwise remind the user using a toast.
                         Toast.makeText(EditMenu.this, R.string.empty_input, Toast.LENGTH_LONG).show();
@@ -190,7 +194,7 @@ public class EditMenu extends AppCompatActivity {
                         DatabaseReference refImagePath = database.getReference("menu/"+actualId+"/imagePath");
                         refImagePath.setValue(imagePath.toString());
                     }
-                    Intent intent = new Intent(EditMenu.this, Menu.class);
+                    Intent intent = new Intent(EditMenu.this, MainActivity.class);
                     startActivity(intent);
                 }
             }

@@ -19,10 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditMenu" />
-        <activity
-            android:name=".Menu"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
