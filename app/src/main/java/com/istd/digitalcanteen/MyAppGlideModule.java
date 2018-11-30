@@ -10,7 +10,7 @@ import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.InputStream;
-
+// a helper class to download and display image from firebase storage to ImageView (in our case ImageButton)
 @GlideModule
 public class MyAppGlideModule extends AppGlideModule {
 

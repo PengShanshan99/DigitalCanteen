@@ -6,7 +6,6 @@ public class Food {
     private String price;
     private String prepTime;
     private String availability;
-    private String photoUri;
 
     public Food(String id, String stall, String name, String price, String prepTime, String availability, String photoUri) {
         //this.id = id;
@@ -16,14 +15,6 @@ public class Food {
         this.availability = availability;
     }
     public Food(){}
-
-//    public String getId() {
-//        return id;
-//    }
-
-//    public void setId(String id) {
-//        this.id = id;
-//    }
 
     public String getName() {
         return name;

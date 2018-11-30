@@ -29,7 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-
+//this is the Activity where users use to add new food item or modify existing item.
 public class EditMenu extends AppCompatActivity {
 
     private static final int GALLERY_INTENT = 2;
@@ -70,7 +70,7 @@ public class EditMenu extends AppCompatActivity {
         imageButtonFoodPhoto = findViewById((R.id.food_photo));
 
 
-        //TODO make the go back go back to the correct place: to be done as the last step as the activity structures may change
+        //TODO 4. make the go back go back to the correct place: to be done as the last step as the activity structures may change
         if (idOld!=-1){//editing existing food item
             actualId = idOld;
             DatabaseReference refOld = database.getReference("menu/" + actualId);

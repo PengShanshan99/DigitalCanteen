@@ -22,7 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//the menu page, where stall owners can add new food or edit existing item.
+//TODO 3. solve the problem of having to click 3 times of button before the UI successfully retrieve data from firebase.
 public class MenuFragments extends Fragment {
     Context mContext;
     RecyclerView recyclerViewMenu;
@@ -37,9 +38,6 @@ public class MenuFragments extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
-        //return inflater.inflate(R.layout.fragment_menu, null);
-        //add new food item
         //todo_done 1.1.1. how to inflate a recyclerview in a fragment following stackoverflow
         mContext = getActivity();
         rootView = inflater.inflate(R.layout.fragment_menu, container, false);
