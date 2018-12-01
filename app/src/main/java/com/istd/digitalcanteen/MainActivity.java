@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     //todo_done 1.2. the tutorial has changed the whole MainActivity extends mOnNavigationItemSelectedListener, but I didnt do it. Think about the difference.
 
     //TODO_done 1. change the UI without switching to another activity
-
+//TODO 1.2. write the suggested cooking sequence fragment
     private boolean loadFragments(Fragment fragment){
         if(fragment != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
