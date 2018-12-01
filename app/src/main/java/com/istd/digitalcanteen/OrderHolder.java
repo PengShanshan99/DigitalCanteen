@@ -37,6 +37,7 @@ public class OrderHolder extends RecyclerView.ViewHolder {
     FirebaseDatabase mFB;//a firebase database object
     DatabaseReference mRef;// a reference object for firebase orderqueue
     public OrderHolder(View itemView){
+        //todo 1.4. delete the food in the
         super(itemView);
         mView = itemView;
         foodList = new ArrayList<String>();
@@ -69,17 +70,15 @@ public class OrderHolder extends RecyclerView.ViewHolder {
     public void setDetails(Context ctx, String time, ArrayList<Integer> foods){
         Log.i("orderqueue","the foods received by holder is "+foods.toString());
         TextView textViewTime = mView.findViewById(R.id.cardView_time_of_ordering);
-        //listViewfoods = mView.findViewById(R.id.listView_foods_in_order);
         //TODO_done 1.1. use adapter, display JSONArray in ListView
         //TODO_done 1.2. change back to use arraylist since it's so easy to use hhh
         this.getFoodList(foods);
         Log.i("orderqueue1","foodList now is "+foodList.toString());
-        //listViewfoods.setAdapter(new ArrayAdapter(itemView.getContext(), android.R.layout.simple_list_item_1, foodList));
         textViewTime.setText(time);
         //todo_done try using a single textView to do the job
     }
 
-    private void getFoodList(ArrayList<Integer> foods){
+    private void getFoodList(ArrayList<Integer> foods){//how come i didnt return anything it also works?
         for (int i = 0; i < foods.size(); i++){
             DatabaseReference tempRef = FirebaseDatabase.getInstance().getReference("menu/" + foods.get(i).toString()+"/name");
             tempRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -87,7 +86,6 @@ public class OrderHolder extends RecyclerView.ViewHolder {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     foodList.add(dataSnapshot.getValue(String.class));
                     Log.i("orderqueue12","foodList now is "+foodList.toString());
-                    //listViewfoods.setAdapter(new ArrayAdapter(itemView.getContext(), android.R.layout.simple_list_item_1, foodList));
                     toPutInTextView += dataSnapshot.getValue(String.class);
                     toPutInTextView += "\n";
                     toPutInTextView = toPutInTextView.replace("\\\n",System.getProperty("line.separator"));

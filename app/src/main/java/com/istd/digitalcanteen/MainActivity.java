@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO_done 1. change the UI without switching to another activity
 //TODO 1.2. write the suggested cooking sequence fragment
+    //TODO 3. implemenet add-on/toppings for the orders
     private boolean loadFragments(Fragment fragment){
         if(fragment != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
@@ -43,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment = null;
             switch (item.getItemId()){
                 case R.id.navigation_home:
-
                     fragment = new OrdersFragment();
                     break;
                 case R.id.navigation_menu:
                     fragment = new MenuFragments();
+                    break;
+                case R.id.navigation_dashboard:
+                    fragment = new SuggestedQueueFragment();
                     break;
             }
             return loadFragments(fragment);

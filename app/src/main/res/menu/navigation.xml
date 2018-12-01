@@ -10,7 +10,7 @@
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Cooking Suggestion" />
+        android:title="to cook" />
 
     <item
         android:id="@+id/navigation_menu"
