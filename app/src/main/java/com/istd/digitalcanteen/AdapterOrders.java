@@ -39,7 +39,7 @@ public class AdapterOrders extends RecyclerView.Adapter<OrderHolder> {
         Log.i("adapterhay", "onBindViewHolder is called!");
         Order anotherOrder = orders.get(position);
         Log.i("setid", "id is set in onBindViewHolder");
-        orderHolder.setDetails(context, anotherOrder.getTime(), anotherOrder.getFoods());
+        orderHolder.setDetails(context, anotherOrder.getTime(), anotherOrder.getFoods(), anotherOrder.isDone());
         //todo 1.4 instead of directly using position, try to use the actual id on firebase (now is because they are coincidentally the same.)
         orderHolder.setId(position);
     }

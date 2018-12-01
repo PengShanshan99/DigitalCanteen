@@ -81,6 +81,7 @@ public class SuggestedQueueFragment extends Fragment {
         buttonReorderQ.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                //todo 1.2.1. change the background color of first 5 listview item
                 if (toBeDisplayed.size() > 5) {
                     ArrayList<String> reOrdered = new ArrayList<String>();
                     for (int i = 0; i < 5; i++) {
