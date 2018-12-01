@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +31,8 @@ public class OrdersFragment extends Fragment {
     Context mContext;
     RecyclerView recyclerViewOrders;
     FirebaseDatabase mFB;//a firebase database object
-    DatabaseReference mRef;// a reference object for firebase
+    //DatabaseReference mRefFoodQ;
+    DatabaseReference mRef;// a reference object for firebase orderqueue
     AdapterOrders mAdapter;// an adapter that combines the firebase reference to the recycler view in our UI
     ArrayList<Order> list = new ArrayList<Order>();// a list for order objects
     View rootView;
@@ -43,6 +46,7 @@ public class OrdersFragment extends Fragment {
         mContext = getActivity();
         rootView = inflater.inflate(R.layout.fragment_orders, container, false);
         mFB = FirebaseDatabase.getInstance();
+        //mRefFoodQ = mFB.getReference("foodQueue");
         mRef = mFB.getReference("orderQueue");
         recyclerViewOrders = rootView.findViewById(R.id.recyclerView_orders);
         recyclerViewOrders.setHasFixedSize(true);

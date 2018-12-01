@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,17 +27,42 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderHolder extends RecyclerView.ViewHolder {
-
+    Integer orderId;
     View mView;
     ArrayList<String> foodList;
     ListView listViewfoods;
     TextView textViewFoods;
     String toPutInTextView = "";
+    CheckBox checkBoxFinished;
+    FirebaseDatabase mFB;//a firebase database object
+    DatabaseReference mRef;// a reference object for firebase orderqueue
     public OrderHolder(View itemView){
         super(itemView);
         mView = itemView;
         foodList = new ArrayList<String>();
         textViewFoods = mView.findViewById(R.id.cardView_food_item);
+        checkBoxFinished = mView.findViewById(R.id.checkBox_finished);
+        mFB = FirebaseDatabase.getInstance();
+        checkBoxFinished.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    //change the done attribute to true
+                    mRef = mFB.getReference("orderQueue/"+orderId+"/done");
+                    mRef.setValue(true);
+                }else{
+                    //change the done attribute to false
+                    mRef = mFB.getReference("orderQueue/"+orderId+"/done");
+                    mRef.setValue(false);
+                }
+            }
+        });
+    }
+
+    public void setId(int id){
+        this.orderId = id;
+        String message = "a view with id "+id+" is created and set.";
+        Log.i("setid", message);
     }
 
     //TODO 2.implement the time passed since ordering function
