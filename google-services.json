@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "771684846055",
+    "firebase_url": "https://digitalcanteentest.firebaseio.com",
+    "project_id": "digitalcanteentest",
+    "storage_bucket": "digitalcanteentest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771684846055:android:5536f4bd03642b05",
+        "android_client_info": {
+          "package_name": "e.zddd.a1dcode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771684846055-vfcbrtk63r6omp4flmdrdkfj2frob7rv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1OOutbMDLtQDX3b6fLSOfsNCHcybEceo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

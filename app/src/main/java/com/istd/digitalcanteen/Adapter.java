@@ -14,7 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 //this is an adapter used to display firebase database lively on MenuFragments in MainActivity
-public class Adapter extends RecyclerView.Adapter<FoodHolder> {
+public class   Adapter extends RecyclerView.Adapter<FoodHolder> {
     List<Food> list;
     Context context;
     ArrayList<Integer> list_of_id;

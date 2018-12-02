@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 //the menu page, where stall owners can add new food or edit existing item.
 //TODO 3. solve the problem of having to click 3 times of button before the UI successfully retrieve data from firebase.
-public class MenuFragments extends Fragment {
+public class ExploreFragments extends Fragment {
     Context mContext;
     RecyclerView recyclerViewMenu;
     FirebaseDatabase mFB;//a firebase database object
@@ -40,25 +40,17 @@ public class MenuFragments extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //todo_done 1.1.1. how to inflate a recyclerview in a fragment following stackoverflow
         mContext = getActivity();
-        rootView = inflater.inflate(R.layout.fragment_menu, container, false);
+        rootView = inflater.inflate(R.layout.fragment_explore, container, false);
         //todo_done 1.1.: inflate the recycler view display in main activity when menu bar is selected
         // the refresh bar to inflate food information
-        FloatingActionButton fab_add = rootView.findViewById(R.id.fab_moving);
-        fab_add.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Log.i("addNewIntentCreated","the method setOnClickListener is called");
-                Intent intent = new Intent(getActivity(), EditMenu.class);
-                startActivity(intent);
-            }
-        });
+
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("menu");
         recyclerViewMenu = rootView.findViewById(R.id.recyclerView_menu_moving);
         recyclerViewMenu.setHasFixedSize(true);
         Log.i("movingDebug","mFB, mRef, recyclerview assigned.");
-        FloatingActionButton fab_refresh = (FloatingActionButton) rootView.findViewById(R.id.fab_refresh_moving);//refresh the list when this button is clicked
-        fab_refresh.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab_refresh_moving = (FloatingActionButton) rootView.findViewById(R.id.fab_refresh_moving);//refresh the list when this button is clicked
+        fab_refresh_moving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mRef.addValueEventListener(new ValueEventListener() {

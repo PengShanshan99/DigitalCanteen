@@ -6,10 +6,14 @@ import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -18,6 +22,11 @@ import org.w3c.dom.Text;
 public class FoodHolder extends RecyclerView.ViewHolder {
     View mView;
     Integer id;
+    public Order tempOrder;
+    FirebaseDatabase mFB;//a firebase database object
+    DatabaseReference mRef;// a reference object for firebase
+
+
     public FoodHolder(View itemView){
         super(itemView);
         mView = itemView;
@@ -25,12 +34,19 @@ public class FoodHolder extends RecyclerView.ViewHolder {
         mView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EditMenu.class);
-                intent.putExtra("id", id);
-                view.getContext().startActivity(intent);
+                //int position = getAdapterPosition();
+                //tempOrder.addFood(position);
+                //FirebaseDatabase database = FirebaseDatabase.getInstance();
+                //DatabaseReference myRef = database.getReference("order");
+                //myRef.setValue(tempOrder);
+
+                Toast.makeText(view.getContext(),"Added to shopping cart",Toast.LENGTH_SHORT).show();
+
             }
         });
     }
+
+
 
     public void setId(int id){
         this.id = id;
@@ -47,7 +63,7 @@ public class FoodHolder extends RecyclerView.ViewHolder {
         ImageView imageViewPhoto = mView.findViewById(R.id.cardview_food_photo);
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         StorageReference imagePathReal = storageRef.child("foodPhotos").child(this.id+".jpg");
-        GlideApp.with(itemView.getContext() /* context */)
+        Glide.with(itemView.getContext() /* context */)
                 .load(imagePathReal)
                 .into(imageViewPhoto);
         Log.i("glidehay",imagePathReal.toString());

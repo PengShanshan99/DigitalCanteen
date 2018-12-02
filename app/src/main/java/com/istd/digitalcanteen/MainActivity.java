@@ -14,8 +14,7 @@ public class MainActivity extends AppCompatActivity {
     //todo_done 1.2. the tutorial has changed the whole MainActivity extends mOnNavigationItemSelectedListener, but I didnt do it. Think about the difference.
 
     //TODO_done 1. change the UI without switching to another activity
-//TODO 1.2. write the suggested cooking sequence fragment
-    //TODO 3. implemenet add-on/toppings for the orders
+
     private boolean loadFragments(Fragment fragment){
         if(fragment != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
@@ -43,15 +42,15 @@ public class MainActivity extends AppCompatActivity {
 //            }
             Fragment fragment = null;
             switch (item.getItemId()){
-                case R.id.navigation_home:
-                    fragment = new OrdersFragment();
+                case R.id.navigation_explore:
+                    fragment = new ExploreFragments();
                     break;
-                case R.id.navigation_menu:
-                    fragment = new MenuFragments();
+                case R.id.navigation_shoppingCart:
                     break;
-                case R.id.navigation_dashboard:
-                    fragment = new SuggestedQueueFragment();
+                case R.id.navigation_wallet:
+                    fragment = new WalletFragments();
                     break;
+
             }
             return loadFragments(fragment);
         }
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i("orderqueueDebug","creating order fragment");
-        loadFragments(new OrdersFragment());
+        loadFragments(new ExploreFragments());
         Log.i("orderqueueDebug","order fragment created");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

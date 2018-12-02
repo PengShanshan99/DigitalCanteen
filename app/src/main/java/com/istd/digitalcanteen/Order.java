@@ -4,8 +4,6 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 //TODO 1. finish orderQueue
-//TODO_doneByUsingTextView 1.1. make the listview in the recycler view expandable
-//TODO 1.2. solve the problem of the latest food order should be displayed at the top
 public class Order {
     private String time;
     private Double total;
@@ -50,6 +48,10 @@ public class Order {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public void addFood(Integer foodId){
+        this.foods.add(foodId);
     }
 
 }
