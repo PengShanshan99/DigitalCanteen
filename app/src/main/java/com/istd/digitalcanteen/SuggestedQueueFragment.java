@@ -90,7 +90,7 @@ public class SuggestedQueueFragment extends Fragment {
                     }
                     ArrayAdapter<String> arrayAdapterReorder = new ArrayAdapter<String>(
                             getContext(),
-                            android.R.layout.simple_list_item_1,
+                            R.layout.text_view_format,
                             reOrdered );
                     listViewQ.setAdapter(arrayAdapterReorder);
                     Log.i("foodQ7","is listview child null? : "+(listViewQ == null));
