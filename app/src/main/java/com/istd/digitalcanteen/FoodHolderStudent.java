@@ -27,14 +27,14 @@ import java.util.ArrayList;
 
 
 // a view holder to inflate cardviews on recycler view to display firebase database on UI
-public class FoodHolder extends RecyclerView.ViewHolder {
+public class FoodHolderStudent extends RecyclerView.ViewHolder {
     View mView;
     int id;
     FirebaseDatabase mFB;
     DatabaseReference mRef;
 
 
-    public FoodHolder(View itemView){
+    public FoodHolderStudent(View itemView){
         super(itemView);
         mView = itemView;
         Log.i("holderhay", "holder is created");

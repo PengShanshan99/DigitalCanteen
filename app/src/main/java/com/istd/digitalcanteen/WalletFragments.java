@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import android.text.format.DateUtils;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class WalletFragments extends Fragment {
     Context mContext;
@@ -36,6 +38,7 @@ public class WalletFragments extends Fragment {
     Adapter mAdapter;
     double dailyExpense;
     double weeklyExpense;
+    Button addCardButton;
 
     @Nullable
     @Override
@@ -47,6 +50,20 @@ public class WalletFragments extends Fragment {
         //TODO:retrieve finished order by this user according to date of order
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("menu"); //menu to be changed
+
+        //TextView total = TextView.findViewById(R.id.total);
+
+
+
+        Button addCardButton = rootView.findViewById(R.id.button_addCard);
+        addCardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("addNewIntentCreated","the method setOnClickListener is called");
+                Intent intent = new Intent(getActivity(), AddCard.class);
+                startActivity(intent);
+            }
+        });
 
 
         FloatingActionButton fab_refresh = (FloatingActionButton) rootView.findViewById(R.id.fab_refresh_moving);//refresh the list when this button is clicked

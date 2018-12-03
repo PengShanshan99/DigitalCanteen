@@ -27,8 +27,8 @@ import java.util.List;
 public class ExploreFragments extends Fragment {
     Context mContext;
     RecyclerView recyclerViewMenu;
-    FirebaseDatabase mFB;//a firebase database object
-    DatabaseReference mRef;// a reference object for firebase
+    FirebaseDatabase mFB;
+    DatabaseReference mRef;
     Adapter mAdapter;// an adapter that combines the firebase reference to the recycler view in our UI
     List list;// a list for food objects
     ArrayList<Integer> list_of_id;// a list to remember the id's when the food items are retrieved from firebase, so that when
@@ -38,11 +38,9 @@ public class ExploreFragments extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //todo_done 1.1.1. how to inflate a recyclerview in a fragment following stackoverflow
+
         mContext = getActivity();
         rootView = inflater.inflate(R.layout.fragment_explore, container, false);
-        //todo_done 1.1.: inflate the recycler view display in main activity when menu bar is selected
-        // the refresh bar to inflate food information
 
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("menu");
