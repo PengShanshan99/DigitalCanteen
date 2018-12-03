@@ -5,4 +5,7 @@
         android:paddingBottom="3dip"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+    android:layout_marginLeft="9dp"
+    android:layout_marginRight="9dp"
+    android:textColor="#000"/>
