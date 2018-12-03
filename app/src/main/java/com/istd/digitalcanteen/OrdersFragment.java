@@ -115,9 +115,9 @@ public class OrdersFragment extends Fragment {
         Log.i("movingDebug", "OnChangeListener finished");
         Log.i("movingDebug", "mAdapter assigned with list "+list.toString());
 
-        for (Order order1: list){
-            Log.i("orderqueue5","foods in order "+order1.toString()+" is "+order1.getTime().toString());
-        }
+//        for (Order order1: list){
+//            Log.i("orderqueue5","foods in order "+order1.toString()+" is "+order1.getTime().toString());
+//        }
         mAdapter = new AdapterOrders(list, recyclerViewOrders.getContext());
 //        recyclerViewOrders.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        recyclerViewOrders.setAdapter(mAdapter);
