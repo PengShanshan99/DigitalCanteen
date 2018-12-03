@@ -8,7 +8,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/AppTheme">
         <activity
             android:name=".LogIn"
@@ -20,16 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditMenu" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
-        </activity>
-    </application>
-=======
-        android:theme="@style/AppTheme"></application>
->>>>>>> b41016b0f35e5c63fc2948a9f169205be7f01af5
 
+    </application>
+        android:theme="@style/AppTheme">
 </manifest>

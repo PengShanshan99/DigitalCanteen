@@ -16,13 +16,9 @@
     android:layout_marginStart="@dimen/activity_horizontal_margin"
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginTop="@dimen/activity_vertical_margin"
-<<<<<<< HEAD
     android:text="Click refresh button to load your orders. Upon finish, check the Finished box to deliver the message!"
         android:textSize="30dp"
         android:textColor="#fff"
-=======
-    android:text="orders"
->>>>>>> b41016b0f35e5c63fc2948a9f169205be7f01af5
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
 
