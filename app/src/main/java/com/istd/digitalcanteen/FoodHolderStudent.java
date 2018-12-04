@@ -64,7 +64,7 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int count = (int) dataSnapshot.child("tempOrder").getValue();
-                mRef.child("tempOrder/count+1").setValue(int id);
+                mRef.child("tempOrder/count+1").setValue("7");
             }
 
             @Override
@@ -100,6 +100,4 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
         textViewPrepTime.setText("estimated preparation time: "+prepTime);
         textViewAvailability.setText("availability: "+availability);
     }
-
-
 }

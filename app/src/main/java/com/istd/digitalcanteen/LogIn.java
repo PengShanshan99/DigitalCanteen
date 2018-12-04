@@ -29,7 +29,8 @@ public class LogIn extends AppCompatActivity {
         buttonStudentLogin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(LogIn.this, "student page coming soon.",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(LogIn.this, StudentMain.class);
+                startActivity(intent);
             }
         });
     }

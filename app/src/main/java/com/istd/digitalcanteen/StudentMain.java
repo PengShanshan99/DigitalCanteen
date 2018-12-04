@@ -31,7 +31,8 @@ public class StudentMain extends AppCompatActivity {
                     fragment = new ExploreFragments();
                     break;
                 case R.id.navigation2_shoppingCart:
-                    Toast.makeText(StudentMain.this, "ShoppingCart coming soon.",Toast.LENGTH_LONG).show();
+//                    Toast.makeText(StudentMain.this, "ShoppingCart coming soon.",Toast.LENGTH_LONG).show();
+                    fragment = new ShoppingCFragment();
 
                     break;
                 case R.id.navigation2_wallet:
