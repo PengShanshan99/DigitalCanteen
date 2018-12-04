@@ -59,12 +59,13 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
     public void sendTempOrder(int id){
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("tempOrder");
+        final int foodId = id;
 
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int count = (int) dataSnapshot.child("tempOrder").getValue();
-                mRef.child("tempOrder/count+1").setValue("7");
+                mRef.child("tempOrder/count+1").setValue(foodId);
             }
 
             @Override
@@ -100,4 +101,6 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
         textViewPrepTime.setText("estimated preparation time: "+prepTime);
         textViewAvailability.setText("availability: "+availability);
     }
+
+
 }
