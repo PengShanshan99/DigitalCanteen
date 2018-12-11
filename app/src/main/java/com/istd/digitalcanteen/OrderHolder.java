@@ -31,7 +31,6 @@ public class OrderHolder extends RecyclerView.ViewHolder {
     Integer orderId;
     View mView;
     ArrayList<String> foodList;
-    ListView listViewfoods;
     TextView textViewFoods;
     String toPutInTextView = "";
     CheckBox checkBoxFinished;
@@ -62,17 +61,17 @@ public class OrderHolder extends RecyclerView.ViewHolder {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                 appleSnapshot.getRef().removeValue();
-                                foodQSize.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        foodQSize.setValue(dataSnapshot.getValue(Integer.class)-1);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
+//                                foodQSize.addListenerForSingleValueEvent(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                        foodQSize.setValue(dataSnapshot.getValue(Integer.class)-1);
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                    }
+//                                });
                             }
                         }
                         @Override

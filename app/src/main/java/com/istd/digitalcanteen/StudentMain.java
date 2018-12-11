@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class StudentMain extends AppCompatActivity {
 
@@ -33,10 +32,12 @@ public class StudentMain extends AppCompatActivity {
                 case R.id.navigation2_shoppingCart:
 //                    Toast.makeText(StudentMain.this, "ShoppingCart coming soon.",Toast.LENGTH_LONG).show();
                     fragment = new ShoppingCFragment();
-
                     break;
                 case R.id.navigation2_wallet:
                     fragment = new WalletFragments();
+                    break;
+                case R.id.navigation2_track_orders:
+                    fragment = new TrackOrderFragment();
                     break;
 
             }

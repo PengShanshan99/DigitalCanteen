@@ -13,19 +13,20 @@
         android:layout_marginRight="9dp">
 
         <TextView
-            android:id="@+id/cardView_time_of_ordering"
+            android:id="@+id/cardView_track_order_time"
             android:layout_width="285dp"
             android:layout_height="wrap_content"
             android:text="date and time of ording" />
         <CheckBox
-            android:id="@+id/checkBox_finished"
+            android:id="@+id/checkBox_finished_track"
             android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Finished" />
+            android:text="Delivered"
+            android:clickable="false"/>
 
         <TextView
-            android:id="@+id/cardView_food_item"
+            android:id="@+id/cardView_food_item_track"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView

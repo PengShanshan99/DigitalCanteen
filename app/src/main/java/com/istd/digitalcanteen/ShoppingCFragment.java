@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-
+//TODO 6 implement the swipe to remove function for the recycler view.
 public class ShoppingCFragment extends Fragment {
     Context mContext;
     RecyclerView recyclerViewSC;
