@@ -28,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginBottom="206dp"
+        android:layout_marginBottom="180dp"
         app:srcCompat="@android:drawable/dialog_holo_light_frame" />
 
     <TextView
@@ -72,9 +72,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="42dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginBottom="91dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginBottom="95dp"
         android:text="MY CARD 1"
         android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
@@ -85,9 +85,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="192dp"
-        android:layout_marginLeft="192dp"
-        android:layout_marginBottom="87dp"
+        android:layout_marginStart="206dp"
+        android:layout_marginLeft="206dp"
+        android:layout_marginBottom="93dp"
         android:text="ADD CARD"
         android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 

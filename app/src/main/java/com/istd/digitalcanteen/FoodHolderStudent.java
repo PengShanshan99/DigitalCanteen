@@ -3,6 +3,7 @@ package com.istd.digitalcanteen;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -35,10 +36,7 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
     int id;
     FirebaseDatabase mFB;
     DatabaseReference mRef;
-    Query lastQuery;
     long oldId;
-    int newId;
-    String actualId;
 
     public FoodHolderStudent(View itemView){
 
@@ -50,6 +48,7 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
             public void onClick(View view) {
 
                 int id = getId();
+
                 //sendTempOrder(id);
 
                 Toast.makeText(view.getContext(),"Added to shopping cart",Toast.LENGTH_SHORT).show();
@@ -65,12 +64,21 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
     public void sendTempOrder(int id){
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("tempOrder");
-        Query lastQuery = mRef.child("tempOrder").orderByKey().limitToLast(1);
-        //long oldId = ResultSet.getLong(lastQuery);
+        final int idValue = id; // idValue is the id of food item clicked
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                long oldId = dataSnapshot.getChildrenCount();
+                int newId = (int)oldId+1;
+                String actualId = Integer.toString(newId);
+                mRef.child(actualId).setValue(idValue);
+            }
 
-        int newId = (int)oldId + 1;
-        String actualId = Integer.toString(newId);
-        mRef.child(actualId).setValue(id);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
 
