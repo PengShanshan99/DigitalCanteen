@@ -1,4 +1,7 @@
 package com.istd.digitalcanteen;
 
-public class trackOrderFragment {
+import android.support.v4.app.Fragment;
+
+public class TrackOrderFragment extends Fragment {
+
 }

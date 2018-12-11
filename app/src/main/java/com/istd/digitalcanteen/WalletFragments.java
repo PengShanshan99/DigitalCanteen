@@ -28,17 +28,7 @@ import android.widget.TextView;
 
 public class WalletFragments extends Fragment {
     Context mContext;
-    RecyclerView recyclerViewMenu;
-    FirebaseDatabase mFB;
-    DatabaseReference mRef;
-    ArrayList<Integer> list_of_id;// a list to remember the id's when the food items are retrieved from firebase, so that when
-    //people want to modify a food and click on a food display in the ui and be led to the edit food page, the edittextviews could be filled up automatically
-    //with the data retrieved from firebase first.
     View rootView;
-    Adapter mAdapter;
-    double dailyExpense;
-    double weeklyExpense;
-    Button addCardButton;
 
     @Nullable
     @Override
@@ -46,67 +36,6 @@ public class WalletFragments extends Fragment {
 
         mContext = getActivity();
         rootView = inflater.inflate(R.layout.fragment_wallet, container, false);
-
-        //TODO:retrieve finished order by this user according to date of order
-        mFB = FirebaseDatabase.getInstance();
-        mRef = mFB.getReference("menu"); //menu to be changed
-
-        //TextView total = TextView.findViewById(R.id.total);
-
-
-
-        Button addCardButton = rootView.findViewById(R.id.button_addCard);
-        addCardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("addNewIntentCreated","the method setOnClickListener is called");
-                Intent intent = new Intent(getActivity(), AddCard.class);
-                startActivity(intent);
-            }
-        });
-
-
-        FloatingActionButton fab_refresh = (FloatingActionButton) rootView.findViewById(R.id.fab_refresh_moving);//refresh the list when this button is clicked
-
-        fab_refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        Toast toast = Toast.makeText(getActivity(), R.string.databaseChanged, Toast.LENGTH_LONG);
-//                        toast.show();
-                        double dailyExpense = 0.0;
-                        double weeklyExpense = 0.0;
-
-                        list_of_id = new ArrayList<Integer>();
-                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                            list_of_id.add(Integer.parseInt(dataSnapshot1.getKey()));
-                            Order orderRetrieved = dataSnapshot1.getValue(Order.class);
-
-                            double orderTotal = orderRetrieved.getTotal();
-                            String orderTime = orderRetrieved.getTime();
-                            //TODO:write date information in order
-                            //TODO: read date info here
-
-                            //if DateUtils.isToday(orderTime){
-                            //  dailyExpense = dailyExpense + orderTotal;
-                            //}
-                            //TODO: calculate and display daily&weekly expense
-
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.w("hello", "Failed to read value.", databaseError.toException());
-                    }
-                });
-
-            }
-
-        });
         return rootView;
     }
 
