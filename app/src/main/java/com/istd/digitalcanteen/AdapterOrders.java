@@ -11,22 +11,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//This is an Adapter to display orders onto RecyclerView of OrderViewingFragment of the stall side
 public class AdapterOrders extends RecyclerView.Adapter<OrderHolder> {
-//public class AdapterOrders extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     List<Order> orders;
     Context context;
 
     public AdapterOrders(List<Order> list, Context context) {
         this.orders = list;
         this.context = context;
-        //Log.i("adapterOrder","orders received by AdapterOrder is "+orders.toString());
-
     }
 
     public OrderHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        //public  RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.cardview_orders, viewGroup, false);
         Log.i("adapter", "view is inflated!");
         OrderHolder orderHolder = new OrderHolder(view);
@@ -35,7 +30,6 @@ public class AdapterOrders extends RecyclerView.Adapter<OrderHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OrderHolder orderHolder, int position) {
-        //public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Log.i("adapterhay", "onBindViewHolder is called!");
         Order anotherOrder = orders.get(position);
         Log.i("setid", "id is set in onBindViewHolder");

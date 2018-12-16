@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
-
+//This is an Adapter to display orders on the RecyclerView of TrackingOrderFragment for student
 public class AdapterTrackingOrders extends RecyclerView.Adapter<StudentOrderHolder> {
     List<Order> orders;
     Context context;
@@ -17,7 +17,6 @@ public class AdapterTrackingOrders extends RecyclerView.Adapter<StudentOrderHold
     public AdapterTrackingOrders(List<Order> list, Context context) {
         this.orders = list;
         this.context = context;
-        //Log.i("adapterOrder","orders received by AdapterOrder is "+orders.toString());
 
     }
 

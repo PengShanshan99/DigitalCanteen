@@ -25,7 +25,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
+//The Shopping Cart Fragment fot the student users
 //TODO 6 implement the swipe to remove function for the recycler view.
 public class ShoppingCFragment extends Fragment {
     Context mContext;

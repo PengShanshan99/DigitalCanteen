@@ -15,6 +15,7 @@ import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 // a view holder to inflate cardviews on recycler view to display firebase database on UI
+// holder for Food CardView to be displayed in RecyclerView in the MenuFragemnt for the stalls
 public class FoodHolder extends RecyclerView.ViewHolder {
     View mView;
     Integer id;

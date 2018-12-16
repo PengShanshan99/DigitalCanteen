@@ -7,12 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-
+//A bottom navigation activity for stall owner UI. Different fragments would be loaded when different menu option is selected.
 public class MainActivity extends AppCompatActivity {
-
-
     //todo_done 1.2. the tutorial has changed the whole MainActivity extends mOnNavigationItemSelectedListener, but I didnt do it. Think about the difference.
-
     //TODO_done 1. change the UI without switching to another activity
 //TODO 1.2. write the suggested cooking sequence fragment
     //TODO 3. implemenet add-on/toppings for the orders
@@ -28,19 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
-//                    mTextMessage.setText(R.string.title_home);
-//                    return true;
-//                case R.id.navigation_dashboard:
-//                    mTextMessage.setText(R.string.title_dashboard);
-//                    return true;
-//                case R.id.navigation_edit_menu:
-//                    mTextMessage.setText(R.string.title_edit_menu);
-//                    Intent intent = new Intent(MainActivity.this, Menu.class);
-//                    startActivity(intent);
-//                    return true;
-//            }
             Fragment fragment = null;
             switch (item.getItemId()){
                 case R.id.navigation_home:

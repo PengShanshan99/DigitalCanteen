@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-
+//A ViewHolder for the CardView embedded in the RecyclerView in the ShoppingCart for the students
 public class SCHolder extends RecyclerView.ViewHolder {
     Integer orderId;
     View mView;

@@ -1,14 +1,12 @@
 package com.istd.digitalcanteen;
-
+//Food class
 public class Food {
-    //private String id;//Do I need ID as an attribute actually?
     private String name;
     private String price;
     private String prepTime;
     private String availability;
 
     public Food(String id, String stall, String name, String price, String prepTime, String availability, String photoUri) {
-        //this.id = id;
         this.name = name;
         this.price = price;
         this.prepTime = prepTime;

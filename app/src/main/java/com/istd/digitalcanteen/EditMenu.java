@@ -49,7 +49,6 @@ public class EditMenu extends AppCompatActivity {
     boolean allFilled = false;//check if all fields are filled
     boolean photoUriGot = false;//check if there is a selected photo
     Integer actualId;
-    //TODO_DONE debug: why when clicking on "+" and add new food item, the activity crashes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +56,8 @@ public class EditMenu extends AppCompatActivity {
         setContentView(R.layout.activity_edit_menu);
         Intent intent = getIntent();
         database = FirebaseDatabase.getInstance();
-        //Log.i("databaseInstance","FirebaseDatabase.getInstance() is successfully executed "+database.toString());
         idOld = intent.getIntExtra("id",-1);//get the id from the intent
         storage = FirebaseStorage.getInstance();
-        //Log.i("databaseInstance","FirebaseStorage.getInstance() is successfully executed "+storage.toString());
         storageRef = storage.getReference();
         spinnerFoodAvailability = findViewById(R.id.spinner_availability);
         editTextFoodName = findViewById(R.id.enterFoodName);
@@ -70,7 +67,6 @@ public class EditMenu extends AppCompatActivity {
         imageButtonFoodPhoto = findViewById((R.id.food_photo));
 
 
-        //TODO 4. make the go back go back to the correct place: to be done as the last step as the activity structures may change
         if (idOld!=-1){//editing existing food item
             actualId = idOld;
             DatabaseReference refOld = database.getReference("menu/" + actualId);
@@ -123,9 +119,6 @@ public class EditMenu extends AppCompatActivity {
                 startActivityForResult(intent, GALLERY_INTENT);
             }
         });
-        //String[] tags = {"name","price","availability","prepTime"};this was supposed to be a string
-        //array to loop through. But since it's only 5 elements and I was having some issues with
-        //R.string.enter_food_name, I will just hard-code it out.
 
         buttonMenuSave.setOnClickListener(new View.OnClickListener() {
             @Override

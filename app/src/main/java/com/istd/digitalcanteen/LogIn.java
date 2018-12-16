@@ -1,16 +1,11 @@
 package com.istd.digitalcanteen;
 
-import android.app.ActionBar;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
-
+//the home activity for the APP
 public class LogIn extends AppCompatActivity {
 
     @Override

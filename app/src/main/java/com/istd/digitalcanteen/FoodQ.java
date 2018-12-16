@@ -1,5 +1,6 @@
 package com.istd.digitalcanteen;
-
+//This class corresponds to a record under the "FoodQueue" key in firebase database/
+//This is to be displayed on the RecyclerView for the FoodCookingFragment
 public class FoodQ {
     private String timeOrdered;
     private String foodName;

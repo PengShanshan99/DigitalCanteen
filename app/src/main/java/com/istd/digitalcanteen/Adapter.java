@@ -7,9 +7,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,10 +47,6 @@ public class Adapter extends RecyclerView.Adapter<FoodHolder> {
     public int getItemCount() {
         int arr = 0;
         try {
-//            if(list.size() == 0){
-//                arr = 0;
-//            }else{
-//                arr = list.size();
             arr = list.size();
         } catch (Exception e) {
 

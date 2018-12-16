@@ -1,18 +1,13 @@
 package com.istd.digitalcanteen;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +21,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//A ViewHolder for an CardView embedded in the RecyclerView in the OrderViewingFragment for stall owner
 public class OrderHolder extends RecyclerView.ViewHolder {
     Integer orderId;
     View mView;
@@ -61,17 +56,6 @@ public class OrderHolder extends RecyclerView.ViewHolder {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                 appleSnapshot.getRef().removeValue();
-//                                foodQSize.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                        foodQSize.setValue(dataSnapshot.getValue(Integer.class)-1);
-//                                    }
-//
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                    }
-//                                });
                             }
                         }
                         @Override

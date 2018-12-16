@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
-
+//This is an adapter used to display ordered food items in the RecyclerView in ShoppingCart Fragment.
 public class AdapterSC extends RecyclerView.Adapter<SCHolder> {
     List<String> foodNames;
     Context context;

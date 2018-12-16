@@ -1,19 +1,13 @@
 package com.istd.digitalcanteen;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,57 +16,57 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 
-// a view holder to inflate cardviews on recycler view to display firebase database on UI
 public class FoodHolderStudent extends RecyclerView.ViewHolder {
     View mView;
     int id;
     FirebaseDatabase mFB;
     DatabaseReference mRef;
 
-
     public FoodHolderStudent(View itemView){
+
         super(itemView);
         mView = itemView;
         Log.i("holderhay", "holder is created");
+
         mView.setOnClickListener(new View.OnClickListener(){
+            // what happens after clicking a food item in the menu:
+            // the food id is saved under tempOrder in the firebase, and is retrieved by shoppingCart before checking out
             @Override
             public void onClick(View view) {
-
                 int id = getId();
                 sendTempOrder(id);
-
                 Toast.makeText(view.getContext(),"Added to shopping cart",Toast.LENGTH_SHORT).show();
-
             }
         });
     }
 
     public int getId(){
-        return this.id;
+        return this.id; //save the id of clicked food, the id is going to be saved under tempOrder in Firebase
     }
 
-    public void sendTempOrder(int id){
+    public void sendTempOrder(int id){ //write foodId to firebase
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("tempOrder");
+        final int idValue = id;
 
-        mRef.addValueEventListener(new ValueEventListener() {
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() { // use ListenerForSingleValueEvent
+            // instead of ValueEventListener to avoid carrying out mRef.child("childName").setValue(value) repeatedly
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int count = (int) dataSnapshot.child("tempOrder").getValue();
-                mRef.child("tempOrder/count+1").setValue("7");
+                long oldId = dataSnapshot.getChildrenCount(); //read the current no. of items in tempOrder
+                int newId = (int)oldId + 1; //newId is the child to be added
+                String actualId = Integer.toString(newId);
+                mRef.child(actualId).setValue(idValue); // idValue is the foodId to be saved
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w("hello", "Failed to write to tempOrder.", databaseError.toException());
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-
+        
 
     }
 
@@ -100,4 +94,6 @@ public class FoodHolderStudent extends RecyclerView.ViewHolder {
         textViewPrepTime.setText("estimated preparation time: "+prepTime);
         textViewAvailability.setText("availability: "+availability);
     }
+
+
 }

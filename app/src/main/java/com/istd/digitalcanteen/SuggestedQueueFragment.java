@@ -1,8 +1,6 @@
 package com.istd.digitalcanteen;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -22,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
+//The Food Cooking Fragment for the stall owner users
 public class SuggestedQueueFragment extends Fragment {
     View rootView;
     FirebaseDatabase mFB;
@@ -36,10 +34,8 @@ public class SuggestedQueueFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
         rootView = inflater.inflate(R.layout.fragment_suggested_queue, container, false);
         buttonReorderQ = rootView.findViewById(R.id.fab_reorder_queue);
-        //buttonReorderQ.hide();
         listViewQ = rootView.findViewById(R.id.listViewQ);
         mFB = FirebaseDatabase.getInstance();
         mRef = mFB.getReference("foodQueue");
@@ -94,8 +90,6 @@ public class SuggestedQueueFragment extends Fragment {
                             reOrdered );
                     listViewQ.setAdapter(arrayAdapterReorder);
                     Log.i("foodQ7","is listview child null? : "+(listViewQ == null));
-//                    listViewQ.getChildAt(2).setBackgroundColor(
-//                            Color.parseColor("#00743D"));
                     Log.i("foodQ7", "element "+2+" colored blue");
                 }
             }

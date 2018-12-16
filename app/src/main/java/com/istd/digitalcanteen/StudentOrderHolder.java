@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
-
+//ViewHolder for the CardView embedded in the RecyclerView in the OrderTracking Fragment for the students
 public class StudentOrderHolder extends RecyclerView.ViewHolder {
     Integer orderId;
     View mView;
@@ -60,9 +60,6 @@ public class StudentOrderHolder extends RecyclerView.ViewHolder {
                     boolean focusable = true; // lets taps outside the popup also dismiss it
                     final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
                     popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-                    //TextView textViewPop = popupWindow.getContentView().findViewById(R.id.textview_pop);
-                    //String textOnPopWindow = getEstimateTime(orderId);
-                    //textViewPop.setText(textOnPopWindow);
                     popupView.setOnTouchListener(new View.OnTouchListener() {
                         @Override
                         public boolean onTouch(View v, MotionEvent event) {
@@ -127,24 +124,4 @@ public class StudentOrderHolder extends RecyclerView.ViewHolder {
         }
     }
 
-//    private String getEstimateTime(Integer orderId){
-//        estimatedTime = 0;
-//        mFB.getReference("orderQueue").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-//                    Order orderRetrieved = dataSnapshot1.getValue(Order.class);
-//                    if (orderRetrieved.isDone()==false){
-//                        //TODO 8 a very important change: add another attribute to the order: waitingTime.
-//                        //estimatedTime += Integer.parseInt(orderRetrieved.getCookingTime());
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        })
-//    }
 }

@@ -1,8 +1,7 @@
 package com.istd.digitalcanteen;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
+//Corresponds to a record under the "OrderQueue" key of firebase database
 //TODO 1. finish orderQueue
 //TODO_doneByUsingTextView 1.1. make the listview in the recycler view expandable
 //TODO 1.2. solve the problem of the latest food order should be displayed at the top
