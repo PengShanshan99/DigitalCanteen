@@ -15,9 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-
-
+//This is the ViewHolder for the CardView Embedded in the RecyclerView for the ExploreFragment for the student users.
 public class FoodHolderStudent extends RecyclerView.ViewHolder {
     View mView;
     int id;
